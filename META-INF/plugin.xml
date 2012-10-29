@@ -1,0 +1,28 @@
+<idea-plugin version="2">
+    <name>Spock Enhancements</name>
+    <description>
+        Adds syntax highlighting to Spock labels.
+    </description>
+    <version>0.1-alpha</version>
+    <vendor>Matt Cholick</vendor>
+
+    <depends>org.intellij.groovy</depends>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="107.105"/>
+
+    <application-components>
+
+    </application-components>
+
+    <project-components>
+    </project-components>
+
+    <actions>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <highlightVisitor implementation="com.cholick.idea.spock.highlight.SpockHighlightVisitor"/>
+    </extensions>
+
+</idea-plugin>
