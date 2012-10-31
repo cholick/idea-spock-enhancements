@@ -31,7 +31,7 @@ public class SpockHighlightVisitor implements HighlightVisitor {
         try {
             action.run();
         } finally {
-            spockPsiElementVisitor.clearHighlightInfoHolder();
+            spockPsiElementVisitor.clear();
         }
         return true;
     }

@@ -43,12 +43,15 @@ public class SpockPsiElementVisitor extends PsiElementVisitor {
 
     private TextAttributes buildTextAttributes() {
         if(textAttributes == null) {
-            SpockConfig spockConfig = SpockConfig.load();
+            SpockConfig spockConfig = SpockConfig.getInstance();
             int fontStyle = Font.PLAIN;
-            if(spockConfig.getLabelBold()) {
+            if(spockConfig.labelBold) {
                 fontStyle = fontStyle | Font.BOLD;
             }
-            textAttributes = new TextAttributes(Color.BLUE, null, null, EffectType.BOXED, fontStyle);
+            if(spockConfig.labelItalics) {
+                fontStyle = fontStyle | Font.ITALIC;
+            }
+            textAttributes = new TextAttributes(spockConfig.labelColor, null, null, EffectType.BOXED, fontStyle);
         }
         return textAttributes;
     }
