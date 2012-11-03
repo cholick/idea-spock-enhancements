@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SpockPsiElementVisitor extends PsiElementVisitor {
 
-    private static final List<String> LABELS = Arrays.asList("given", "setup", "when", "then", "and", "expect", "where");
+    private static final List<String> LABELS = Arrays.asList("given", "setup", "when", "then", "and", "expect", "where", "cleanup");
 
     private HighlightInfoHolder highlightInfoHolder;
     private TextAttributes textAttributes;
