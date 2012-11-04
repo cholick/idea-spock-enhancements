@@ -1,6 +1,7 @@
 package com.cholick.idea.spock.highlight;
 
 import com.cholick.idea.spock.config.SpockConfig;
+import com.cholick.idea.spock.data.SpockLabel;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
 import com.intellij.lang.annotation.HighlightSeverity;
@@ -12,14 +13,9 @@ import com.intellij.psi.PsiElementVisitor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.groovy.lang.psi.api.auxiliary.GrLabel;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.util.Arrays;
-import java.util.List;
 
 public class SpockPsiElementVisitor extends PsiElementVisitor {
-
-    private static final List<String> LABELS = Arrays.asList("given", "setup", "when", "then", "and", "expect", "where", "cleanup");
 
     private HighlightInfoHolder highlightInfoHolder;
     private TextAttributes textAttributes;
@@ -27,7 +23,7 @@ public class SpockPsiElementVisitor extends PsiElementVisitor {
     @Override
     public void visitElement(PsiElement element) {
         if (!highlightInfoHolder.hasErrorResults()) {
-            if (element instanceof GrLabel && LABELS.contains(element.getText())) {
+            if (element instanceof GrLabel && SpockLabel.contains(element.getText())) {
                 highlightInfoHolder.add(createHighlightInfo(element));
             }
         }
@@ -42,13 +38,13 @@ public class SpockPsiElementVisitor extends PsiElementVisitor {
     }
 
     private TextAttributes buildTextAttributes() {
-        if(textAttributes == null) {
+        if (textAttributes == null) {
             SpockConfig spockConfig = SpockConfig.getInstance();
             int fontStyle = Font.PLAIN;
-            if(spockConfig.labelBold) {
+            if (spockConfig.labelBold) {
                 fontStyle = fontStyle | Font.BOLD;
             }
-            if(spockConfig.labelItalics) {
+            if (spockConfig.labelItalics) {
                 fontStyle = fontStyle | Font.ITALIC;
             }
             textAttributes = new TextAttributes(spockConfig.labelColor, null, null, EffectType.BOXED, fontStyle);

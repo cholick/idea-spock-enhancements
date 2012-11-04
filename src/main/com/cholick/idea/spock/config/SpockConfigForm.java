@@ -43,7 +43,6 @@ public class SpockConfigForm implements SearchableConfigurable {
         return labelItalics;
     }
 
-    @Nls
     @Override
     public String getDisplayName() {
         return "Spock";
