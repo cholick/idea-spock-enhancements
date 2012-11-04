@@ -1,9 +1,17 @@
 <idea-plugin version="2">
     <name>Spock Enhancements</name>
     <description>
-        Adds syntax highlighting to Spock labels.
+        <![CDATA[
+            <p>
+                This plugin provides support for the Spock specification framework.
+            </p>
+            <ul>
+                <li>Adds syntax highlighting to Spock labels</li>
+                <li>Provides inspections for label ordering</li>
+            </ul>
+        ]]>
     </description>
-    <version>0.1-alpha3</version>
+    <version>0.1</version>
     <vendor>Matt Cholick</vendor>
 
     <depends>org.intellij.groovy</depends>
@@ -27,26 +35,26 @@
         <applicationService serviceInterface="com.cholick.idea.spock.config.SpockConfig"
                             serviceImplementation="com.cholick.idea.spock.config.SpockConfig"/>
 
-        <localInspection language="Groovy" shortName="SpSetupInspection"
-                         displayName="Setup block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpSetupInspection" displayName="Setup block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.SetupInspection"/>
-        <localInspection language="Groovy" shortName="SpGivenInspection"
-                         displayName="Given block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpGivenInspection" displayName="Given block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.GivenInspection"/>
-        <localInspection language="Groovy" shortName="SpExpectInspection"
-                         displayName="Expect block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpExpectInspection" displayName="Expect block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.ExpectInspection"/>
-        <localInspection language="Groovy" shortName="SpWhenInspection"
-                         displayName="When block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhenInspection" displayName="When block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhenInspection"/>
-        <localInspection language="Groovy" shortName="SpThenInspection"
-                         displayName="Then block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpThenInspection" displayName="Then block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.ThenInspection"/>
-        <localInspection language="Groovy" shortName="SpCleanupInspection"
-                         displayName="Cleanup block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpCleanupInspection" displayName="Cleanup block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.CleanupInspection"/>
-        <localInspection language="Groovy" shortName="SpWhereInspection"
-                         displayName="Where block successor" groupName="Spock" enabledByDefault="true"
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhereInspection" displayName="Where block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhereInspection"/>
     </extensions>
 
