@@ -2,4 +2,4 @@ Spock Enhancements is a plugin for IntelliJ IDEA that improves integration with 
 
 The plugin provides:
 * Font changes for the Spock labels. The font change can be configured under IDE Settings -> Spock.
-* Inspections to highlight block ordering errors such as an expect block following a when block. The inspections appear under Groovy -> Spock.
+* Inspections to highlight block ordering errors such as an expect block following a when block. The inspections appear under Inspections -> Groovy -> Spock.
