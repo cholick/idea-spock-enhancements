@@ -15,7 +15,7 @@ public class ExpectInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new ExpectInspection();
+        BaseLabelInspection inspection = new ExpectInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("cleanup", myFixture.doHighlighting(), inspection));
@@ -32,7 +32,7 @@ public class ExpectInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new ExpectInspection();
+        BaseLabelInspection inspection = new ExpectInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("given", myFixture.doHighlighting(), inspection));
@@ -49,7 +49,7 @@ public class ExpectInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new ExpectInspection();
+        BaseLabelInspection inspection = new ExpectInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("then", myFixture.doHighlighting(), inspection));

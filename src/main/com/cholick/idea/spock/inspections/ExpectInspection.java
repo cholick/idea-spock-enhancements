@@ -5,6 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class ExpectInspection extends BaseLabelInspection {
 
+    public ExpectInspection() {
+        super();
+    }
+
+    public ExpectInspection(boolean overrideSpockClassCheck) {
+        super();
+        this.overrideSpockClassCheck = overrideSpockClassCheck;
+    }
+
     @NotNull
     protected SpockLabel getSpockLabel() {
         return SpockLabel.EXPECT;

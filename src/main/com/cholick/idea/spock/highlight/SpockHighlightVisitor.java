@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.highlight;
 
+import com.cholick.idea.spock.util.SpockClassCheck;
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
 import com.intellij.psi.PsiElement;
@@ -17,7 +18,7 @@ public class SpockHighlightVisitor implements HighlightVisitor {
 
     @Override
     public boolean suitableForFile(@NotNull PsiFile file) {
-        return file instanceof GroovyFile;
+        return file instanceof GroovyFile && new SpockClassCheck(file).getIsSpockClass();
     }
 
     @Override

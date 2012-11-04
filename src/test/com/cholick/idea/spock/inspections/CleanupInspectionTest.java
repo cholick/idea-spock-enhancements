@@ -4,8 +4,9 @@ import org.jetbrains.plugins.groovy.GroovyFileType;
 
 public class CleanupInspectionTest extends BaseInspectionTest {
 
-    public void testNoHighlight() {
+    public void _testNoHighlight() {
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, "" +
+                " class Test extends spock.lang.Specification {" +
                 "    def test() {\n" +
                 "        setup:\n" +
                 "        def a = 1\n" +
@@ -15,9 +16,11 @@ public class CleanupInspectionTest extends BaseInspectionTest {
                 "        a = newValue\n" +
                 "        where:\n" +
                 "        newValue << [null]\n" +
-                "    }\n"
+                "    } \n" +
+                "} "
+
         );
-        BaseLabelInspection inspection = new CleanupInspection();
+        BaseLabelInspection inspection = new CleanupInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("where", myFixture.doHighlighting(), inspection));
@@ -36,7 +39,7 @@ public class CleanupInspectionTest extends BaseInspectionTest {
                 "        a == null\n" +
                 "    }\n"
         );
-        BaseLabelInspection inspection = new CleanupInspection();
+        BaseLabelInspection inspection = new CleanupInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("expect", myFixture.doHighlighting(), inspection));

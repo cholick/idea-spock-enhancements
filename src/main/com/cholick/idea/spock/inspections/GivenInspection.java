@@ -5,6 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class GivenInspection extends BaseLabelInspection {
 
+    public GivenInspection() {
+        super();
+    }
+
+    public GivenInspection(boolean overrideSpockClassCheck) {
+        super();
+        this.overrideSpockClassCheck = overrideSpockClassCheck;
+    }
+
     @NotNull
     protected SpockLabel getSpockLabel() {
         return SpockLabel.GIVEN;

@@ -5,6 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class WhereInspection extends BaseLabelInspection {
 
+    public WhereInspection() {
+        super();
+    }
+
+    public WhereInspection(boolean overrideSpockClassCheck) {
+        super();
+        this.overrideSpockClassCheck = overrideSpockClassCheck;
+    }
+
     @NotNull
     protected SpockLabel getSpockLabel() {
         return SpockLabel.WHERE;

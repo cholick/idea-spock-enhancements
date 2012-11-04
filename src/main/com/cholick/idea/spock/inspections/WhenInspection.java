@@ -5,6 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class WhenInspection extends BaseLabelInspection {
 
+    public WhenInspection() {
+        super();
+    }
+
+    public WhenInspection(boolean overrideSpockClassCheck) {
+        super();
+        this.overrideSpockClassCheck = overrideSpockClassCheck;
+    }
+
     @NotNull
     protected SpockLabel getSpockLabel() {
         return SpockLabel.WHEN;

@@ -15,7 +15,7 @@ public class ThenInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new ThenInspection();
+        BaseLabelInspection inspection = new ThenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("cleanup", myFixture.doHighlighting(), inspection));
@@ -32,7 +32,7 @@ public class ThenInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new ThenInspection();
+        BaseLabelInspection inspection = new ThenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("setup", myFixture.doHighlighting(), inspection));

@@ -15,7 +15,7 @@ public class WhereInspectionTest extends BaseInspectionTest {
                 "        a << [3, 4]\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new WhereInspection();
+        BaseLabelInspection inspection = new WhereInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("and", myFixture.doHighlighting(), inspection));
@@ -32,7 +32,7 @@ public class WhereInspectionTest extends BaseInspectionTest {
                 "        a = null\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new WhereInspection();
+        BaseLabelInspection inspection = new WhereInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("cleanup", myFixture.doHighlighting(), inspection));

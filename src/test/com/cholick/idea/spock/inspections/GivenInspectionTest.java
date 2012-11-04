@@ -13,7 +13,7 @@ public class GivenInspectionTest extends BaseInspectionTest {
                 "        a == 1\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new GivenInspection();
+        BaseLabelInspection inspection = new GivenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("expect", myFixture.doHighlighting(), inspection));
@@ -28,7 +28,7 @@ public class GivenInspectionTest extends BaseInspectionTest {
                 "        a == 1\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new GivenInspection();
+        BaseLabelInspection inspection = new GivenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("setup", myFixture.doHighlighting(), inspection));

@@ -3,8 +3,6 @@ package com.cholick.idea.spock.config;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.ColorPanel;
-import org.intellij.images.options.Options;
-import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -56,7 +54,7 @@ public class SpockConfigForm implements SearchableConfigurable {
     @Override
     @NotNull
     public String getHelpTopic() {
-        return "preferences.lookFeel";
+        return "reference.idesettings.spock";
     }
 
     @Override

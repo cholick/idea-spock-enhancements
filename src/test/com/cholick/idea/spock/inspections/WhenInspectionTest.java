@@ -13,7 +13,7 @@ public class WhenInspectionTest extends BaseInspectionTest {
                 "        a == 1\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new WhenInspection();
+        BaseLabelInspection inspection = new WhenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertFalse(hasHighlightingFor("then", myFixture.doHighlighting(), inspection));
@@ -28,7 +28,7 @@ public class WhenInspectionTest extends BaseInspectionTest {
                 "        a == 1\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new WhenInspection();
+        BaseLabelInspection inspection = new WhenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("cleanup", myFixture.doHighlighting(), inspection));
@@ -43,7 +43,7 @@ public class WhenInspectionTest extends BaseInspectionTest {
                 "        a == 1\n" +
                 "    }"
         );
-        BaseLabelInspection inspection = new WhenInspection();
+        BaseLabelInspection inspection = new WhenInspection(true);
         myFixture.enableInspections(inspection);
 
         assertTrue(hasHighlightingFor("expect", myFixture.doHighlighting(), inspection));
