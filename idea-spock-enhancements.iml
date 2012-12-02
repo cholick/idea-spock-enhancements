@@ -13,30 +13,11 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
-          <root url="file:///Applications/IntelliJ IDEA 11 CE.app/plugins/Groovy/lib" />
+          <root url="file://$APPLICATION_HOME_DIR$/plugins/Groovy/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file:///Applications/IntelliJ IDEA 11 CE.app/plugins/Groovy/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library>
-        <CLASSES>
-          <root url="file:///Applications/IntelliJ IDEA 11 CE.app/plugins/properties/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file:///Applications/IntelliJ IDEA 11 CE.app/plugins/properties/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/org.spockframework/spock-core/0.6-groovy-1.8/jar/5c1bfb5058c3659ddc206052601704ccd30133a5/spock-core-0.6-groovy-1.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
+        <jarDirectory url="file://$APPLICATION_HOME_DIR$/plugins/Groovy/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>
