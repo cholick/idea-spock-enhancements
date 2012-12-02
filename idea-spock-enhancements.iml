@@ -20,6 +20,17 @@
         <jarDirectory url="file://$APPLICATION_HOME_DIR$/plugins/Groovy/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="file://$APPLICATION_HOME_DIR$/plugins/properties/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$APPLICATION_HOME_DIR$/plugins/properties/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.8" level="application" />
   </component>
 </module>
 
