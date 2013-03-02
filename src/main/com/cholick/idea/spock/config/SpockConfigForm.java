@@ -47,7 +47,6 @@ public class SpockConfigForm implements SearchableConfigurable {
     }
 
     /** Needed for pre-12 com.intellij.openapi.options.SearchableConfigurable interface */
-    @Override
     public Icon getIcon() {
         return null;
     }
