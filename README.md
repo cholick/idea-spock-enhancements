@@ -8,8 +8,8 @@ A plugin for IntelliJ IDEA that improves integration with the Spock specificatio
 
 #### Spec without plugin
 
-![before.png](https://raw.github.com/wiki/cholick/idea-spock-enhancements/before.png)
+![before.png](https://raw.github.com/wiki/mcholick/idea-spock-enhancements/before.png)
 
 #### Spec with plugin
 
-![after.png](https://raw.github.com/wiki/cholick/idea-spock-enhancements/after.png)
+![after.png](https://raw.github.com/wiki/mcholick/idea-spock-enhancements/after.png)
