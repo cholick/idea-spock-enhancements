@@ -1,0 +1,18 @@
+apply plugin: 'groovy'
+
+repositories() {
+    mavenCentral()
+}
+
+dependencies {
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '1.8.9'
+
+    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+
+}
+
+task libs(type: Copy) {
+    description = 'Create a director w/ all compile deps. For use with ide - include this folder as ide dependency'
+    into('libs')
+    from(configurations.compile, configurations.testCompile)
+}

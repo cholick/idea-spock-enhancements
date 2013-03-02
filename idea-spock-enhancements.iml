@@ -30,7 +30,7 @@
         <jarDirectory url="file://$APPLICATION_HOME_DIR$/plugins/properties/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.8" level="application" />
+    <orderEntry type="library" name="groovy-1.8.9" level="application" />
   </component>
 </module>
 
