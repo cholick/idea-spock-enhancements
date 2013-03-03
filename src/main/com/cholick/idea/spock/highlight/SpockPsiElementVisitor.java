@@ -30,11 +30,7 @@ public class SpockPsiElementVisitor extends PsiElementVisitor {
     }
 
     private HighlightInfo createHighlightInfo(@NotNull PsiElement element) {
-        TextRange range = element.getTextRange();
-        int start = range.getStartOffset();
-        int end = range.getEndOffset();
-
-        return new HighlightInfo(buildTextAttributes(), null, SpockLabelHighlightInfoTypes.SPOCK_LABEL, start, end, null, null, HighlightSeverity.INFORMATION, false, null, false);
+        return HighlightInfo.createHighlightInfo(SpockLabelHighlightInfoTypes.SPOCK_LABEL, element, null, buildTextAttributes());
     }
 
     private TextAttributes buildTextAttributes() {
