@@ -30,6 +30,8 @@
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!--<testFramework implementation="com.cholick.idea.spock.testIntegration.SpockTestFramework" order="before org.jetbrains.plugins.groovy.testIntegration.GroovyTestFramework"/>-->
+        <testFramework implementation="com.cholick.idea.spock.testIntegration.SpockTestFramework" order="first"/>
         <highlightVisitor implementation="com.cholick.idea.spock.highlight.SpockHighlightVisitor"/>
         <applicationConfigurable instance="com.cholick.idea.spock.config.SpockConfigForm"/>
         <applicationService serviceInterface="com.cholick.idea.spock.config.SpockConfig"
