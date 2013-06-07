@@ -92,7 +92,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @NotNull
     @Override
     public String getName() {
-        return "Spockframework";
+        return "Spock";
     }
 
     @NotNull
