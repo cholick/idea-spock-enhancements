@@ -30,7 +30,7 @@
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <defaultLiveTemplatesProvider implementation="com.cholick.idea.spock.template.SpockTemplatesProvider"/>
+        <defaultLiveTemplatesProvider implementation="com.cholick.idea.spock.template.SpockLiveTemplatesProvider"/>
 
         <highlightVisitor implementation="com.cholick.idea.spock.highlight.SpockHighlightVisitor"/>
         <applicationConfigurable instance="com.cholick.idea.spock.config.SpockConfigForm"/>

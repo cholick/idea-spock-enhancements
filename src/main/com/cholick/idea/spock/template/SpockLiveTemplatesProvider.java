@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
  * Time: 10:20 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SpockTemplatesProvider implements DefaultLiveTemplatesProvider {
+public class SpockLiveTemplatesProvider implements DefaultLiveTemplatesProvider {
     @Override
     public String[] getDefaultLiveTemplateFiles() {
         return new String[]{"liveTemplates/Spock"};
