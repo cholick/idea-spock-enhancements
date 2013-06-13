@@ -1,8 +1,10 @@
 package com.cholick.idea.spock.util;
 
+import com.intellij.openapi.util.Condition;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.util.PsiTreeUtil;
 
 public class SpockClassCheck {
 
@@ -14,6 +16,20 @@ public class SpockClassCheck {
             if (child instanceof PsiClass) {
                 isSpockClass = isSpockClass || determineSpockClass((PsiClass) child);
             }
+        }
+    }
+
+    public SpockClassCheck(PsiElement element) {
+        isSpockClass = false;
+        PsiClass topLevelClass = (PsiClass) PsiTreeUtil.findFirstParent(element, true, new Condition<PsiElement>() {
+            @Override
+            public boolean value(PsiElement psiElement) {
+                return psiElement instanceof PsiClass;
+            }
+        });
+
+        if (topLevelClass != null) {
+            isSpockClass = determineSpockClass(topLevelClass);
         }
     }
 

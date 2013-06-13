@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="spock">
+    <template name="spex" value="def &quot;$NAME$&quot;() {&#10;    expect:&#10;    $END$&#10;}" description="Spock Expect" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spew" value="@Unroll&#10;def &quot;$NAME$&quot;() {&#10;    expect:&#10;    $END$&#10;    where:&#10;    // TODO implement where&#10;}" description="Spock Expect-Where" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spgwt" value="def &quot;$NAME$&quot;() {&#10;    given:&#10;    $END$&#10;    when:&#10;    // TODO implement when&#10;    then:&#10;    // TODO implement then&#10;}" description="Spock Given-When-Then" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spgwtc" value="def &quot;$NAME$&quot;() {&#10;    given:&#10;    $END$&#10;    when:&#10;    // TODO implement when&#10;    then:&#10;    // TODO implement then&#10;cleanup:&#10;    // TODO implement cleanup&#10;}" description="Spock Given-When-Then-Cleanup" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spgwtw" value="@Unroll&#10;def &quot;$NAME$&quot;() {&#10;    given:&#10;    $END$&#10;    when:&#10;    // TODO implement when&#10;    then:&#10;    // TODO implement then&#10;    where:&#10;    // TODO implement where&#10;}" description="Spock Given-When-Then-Where" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spgwtwc" value="@Unroll&#10;def &quot;$NAME$&quot;() {&#10;    given:&#10;    $END$&#10;    when:&#10;    // TODO implement when&#10;    then:&#10;    // TODO implement then&#10;    where:&#10;    // TODO implement where&#10;cleanup:&#10;    // TODO implement cleanup&#10;}" description="Spock Given-When-Then-Where-Cleanup" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spwt" value="def &quot;$NAME$&quot;() {&#10;    when:&#10;    $END$&#10;    then:&#10;    // TODO implement then&#10;}" description="Spock When-Then" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+    <template name="spwtw" value="@Unroll&#10;def &quot;$NAME$&quot;() {&#10;    when:&#10;    $END$&#10;    then:&#10;    // TODO implement then&#10;    where:&#10;    // TODO implement where&#10;}" description="Spock When-Then-Where" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="SPOCK_SPECIFICATION" value="true" />
+        </context>
+    </template>
+</templateSet>
