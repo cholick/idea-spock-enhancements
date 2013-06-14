@@ -13,9 +13,11 @@ import org.jetbrains.plugins.groovy.lang.psi.impl.auxiliary.GrLabelImpl
 import com.intellij.psi.impl.source.DummyHolderElement
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.mock.MockApplication
+import org.junit.Ignore
 import org.picocontainer.MutablePicoContainer
 import com.cholick.idea.spock.config.SpockConfig
 
+@Ignore
 class SpockPsiElementVisitorTest extends UsefulTestCase {
 
     private PsiFile file
