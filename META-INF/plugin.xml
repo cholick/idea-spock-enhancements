@@ -8,10 +8,11 @@
             <ul>
                 <li>Adds syntax highlighting to Spock labels</li>
                 <li>Provides inspections for label ordering</li>
+                <li>A collection of live templates for feature methods contributed by @fpape</li>
             </ul>
         ]]>
     </description>
-    <version>0.3</version>
+    <version>0.4</version>
     <vendor>Matt Cholick</vendor>
 
     <depends>org.intellij.groovy</depends>
