@@ -1,6 +1,6 @@
-def "test ${name}"() {
+def "test ${NAME}"() {
     given:
-    ${BODY}
+
     when:
     // TODO implement stimulus
     then:
