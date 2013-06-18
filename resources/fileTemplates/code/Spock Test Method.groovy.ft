@@ -1,0 +1,8 @@
+def "test ${NAME}"() {
+    given:
+
+    when:
+    // TODO implement stimulus
+    then:
+    // TODO implement assertions
+}

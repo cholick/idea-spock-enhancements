@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.util;
 
+import com.cholick.idea.spock.testIntegration.SpockTestFramework;
 import com.intellij.openapi.util.Condition;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -40,7 +41,7 @@ public class SpockClassCheck {
     private boolean determineSpockClass(PsiClass superClass) {
         boolean hasSpecificationParent = false;
         while (superClass != null && !hasSpecificationParent) {
-            hasSpecificationParent = "spock.lang.Specification".equals(superClass.getQualifiedName());
+            hasSpecificationParent = SpockConstants.SPOCK_BASE_CLASS.equals(superClass.getQualifiedName());
             superClass = superClass.getSuperClass();
         }
         return hasSpecificationParent;
