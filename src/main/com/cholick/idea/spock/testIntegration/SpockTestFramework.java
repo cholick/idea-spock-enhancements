@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.testIntegration;
 
+import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.execution.junit.JUnitUtil;
 import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
 import com.intellij.lang.Language;
@@ -29,19 +30,16 @@ import javax.swing.*;
 public class SpockTestFramework extends JavaTestFramework {
     private static final Logger LOG = Logger.getInstance(SpockTestFramework.class);
 
-    private static final String SPOCK_BASE_CLASS = "spock.lang.Specification";
-
 
     @Override
     protected String getMarkerClassFQName() {
-        return SPOCK_BASE_CLASS;
+        return SpockConstants.SPOCK_BASE_CLASS;
     }
 
     @Override
     protected boolean isTestClass(PsiClass clazz, boolean canBePotential) {
         return clazz.getLanguage() == GroovyFileType.GROOVY_LANGUAGE &&
-//                JUnitUtil.isTestClass(clazz) &&
-                InheritanceUtil.isInheritor(clazz, SPOCK_BASE_CLASS);
+                InheritanceUtil.isInheritor(clazz, SpockConstants.SPOCK_BASE_CLASS);
     }
 
     @Override
@@ -109,7 +107,7 @@ public class SpockTestFramework extends JavaTestFramework {
 
     @Override
     public String getDefaultSuperClass() {
-        return SPOCK_BASE_CLASS;
+        return SpockConstants.SPOCK_BASE_CLASS;
     }
 
     @Override
