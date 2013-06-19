@@ -45,7 +45,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @Override
     protected PsiMethod findSetUpMethod(@NotNull PsiClass clazz) {
         for (PsiMethod method : clazz.getMethods()) {
-            if (method.getName().equals("setUp")) return method;
+            if (method.getName().equals("setup")) return method;
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @Override
     protected PsiMethod findTearDownMethod(@NotNull PsiClass clazz) {
         for (PsiMethod method : clazz.getMethods()) {
-            if (method.getName().equals("tearDown")) return method;
+            if (method.getName().equals("cleanup")) return method;
         }
         return null;
     }
