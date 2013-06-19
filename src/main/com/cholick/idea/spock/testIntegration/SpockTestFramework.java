@@ -1,11 +1,16 @@
 package com.cholick.idea.spock.testIntegration;
 
+import com.cholick.idea.spock.GroovyIcons;
 import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.execution.junit.JUnitUtil;
+import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
+import com.intellij.ide.fileTemplates.FileTemplateManager;
 import com.intellij.lang.Language;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.projectRoots.ex.JavaSdkUtil;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.psi.JVMElementFactory;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiMethod;
@@ -14,7 +19,6 @@ import com.intellij.psi.util.InheritanceUtil;
 import com.intellij.psi.util.PsiUtil;
 import com.intellij.testIntegration.JavaTestFramework;
 import com.intellij.util.IncorrectOperationException;
-import icons.JetgroovyIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.groovy.GroovyFileType;
 import org.jetbrains.plugins.groovy.lang.psi.GroovyPsiElementFactory;
@@ -58,6 +62,12 @@ public class SpockTestFramework extends JavaTestFramework {
         return null;
     }
 
+    //Taken from 12 implementation, remove when retire 11.1 compatibility
+    protected PsiMethod createSetUpPatternMethod(JVMElementFactory factory) {
+        final FileTemplate template = FileTemplateManager.getInstance().getCodeTemplate(getSetUpMethodFileTemplateDescriptor().getFileName());
+        return factory.createMethodFromText(StringUtil.replace(template.getText(), "${BODY}\n", ""), null);
+    }
+
     @Override
     protected PsiMethod findOrCreateSetUpMethod(PsiClass clazz) throws IncorrectOperationException {
         LOG.assertTrue(clazz.getLanguage() == GroovyFileType.GROOVY_LANGUAGE);
@@ -96,7 +106,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @NotNull
     @Override
     public Icon getIcon() {
-        return JetgroovyIcons.Groovy.Groovy_16x16;
+        return GroovyIcons.getInstance().getGroovy16Icon();
     }
 
     @NotNull
