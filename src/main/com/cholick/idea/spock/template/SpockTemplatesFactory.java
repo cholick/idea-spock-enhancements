@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.template;
 
+import com.cholick.idea.spock.GroovyIcons;
 import com.intellij.ide.fileTemplates.*;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.psi.PsiDirectory;
@@ -7,7 +8,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import icons.JetgroovyIcons;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,7 +41,7 @@ public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory
     static final String LOW_CASE_NAME_TEMPLATE_PROPERTY = "lowCaseName";
 
     public FileTemplateGroupDescriptor getFileTemplatesDescriptor() {
-        final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor("Spock", JetgroovyIcons.Groovy.Groovy_16x16);
+        final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor("Spock", GroovyIcons.getInstance().getGroovy16Icon());
         final FileTypeManager fileTypeManager = FileTypeManager.getInstance();
         group.addTemplate(new FileTemplateDescriptor(SpockTemplates.SPOCK_SPEC, fileTypeManager.getFileTypeByFileName(SpockTemplates.SPOCK_SPEC).getIcon()));
 
@@ -60,7 +60,7 @@ public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory
                                              @NonNls String... parameters) throws IncorrectOperationException {
         final FileTemplate template = FileTemplateManager.getInstance().getInternalTemplate(templateName);
 
-        Properties properties = new Properties(FileTemplateManager.getInstance().getDefaultProperties(directory.getProject()));
+        Properties properties = new Properties(FileTemplateManager.getInstance().getDefaultProperties());
         JavaTemplateUtil.setPackageNameAttribute(properties, directory);
         properties.setProperty(NAME_TEMPLATE_PROPERTY, name);
         properties.setProperty(LOW_CASE_NAME_TEMPLATE_PROPERTY, name.substring(0, 1).toLowerCase() + name.substring(1));

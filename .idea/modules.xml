@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/idea-spock-enhancements.iml" filepath="$PROJECT_DIR$/idea-spock-enhancements.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellij-adapter-11/intellij-adapter-11.iml" filepath="$PROJECT_DIR$/intellij-adapter-11/intellij-adapter-11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellij-adapter-12/intellij-adapter-12.iml" filepath="$PROJECT_DIR$/intellij-adapter-12/intellij-adapter-12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellij-adapter-api/intellij-adapter-api.iml" filepath="$PROJECT_DIR$/intellij-adapter-api/intellij-adapter-api.iml" />
     </modules>
   </component>
 </project>
