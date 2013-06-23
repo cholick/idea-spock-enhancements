@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.actions;
 
+import com.cholick.idea.spock.GroovyIcons;
 import com.cholick.idea.spock.template.SpockTemplates;
 import com.cholick.idea.spock.template.SpockTemplatesFactory;
 import com.cholick.idea.spock.util.SpockConstants;
@@ -12,13 +13,18 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.vfs.JarFileSystem;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.JavaPsiFacade;
+import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleManager;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.IncorrectOperationException;
-import icons.JetgroovyIcons;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.groovy.GroovyBundle;
 import org.jetbrains.plugins.groovy.actions.GroovySourceFolderDetector;
 import org.jetbrains.plugins.groovy.actions.NewGroovyActionBase;
@@ -34,20 +40,35 @@ import org.jetbrains.plugins.groovy.util.LibrariesUtil;
 public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrTypeDefinition> implements DumbAware {
 
     public NewSpockSpecAction() {
-        super("Spock Specification", "Create new Spock Specification", JetgroovyIcons.Groovy.Class, true);
+        super("Spock Specification", "Create new Spock Specification", GroovyIcons.getInstance().getClassIcon(), true);
     }
 
     @Override
     protected void buildDialog(Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
         builder
                 .setTitle(GroovyBundle.message("newclass.dlg.title"))
-                .addKind("Class", JetgroovyIcons.Groovy.Class, SpockTemplates.SPOCK_SPEC);
+                .addKind("Class", GroovyIcons.getInstance().getClassIcon(), SpockTemplates.SPOCK_SPEC);
     }
 
     @Override
     protected boolean isAvailable(DataContext dataContext) {
         Module module = LangDataKeys.MODULE.getData(dataContext);
-        return super.isAvailable(dataContext) && LibrariesUtil.hasGroovySdk(module) && LibrariesUtil.findJarWithClass(module, SpockConstants.SPOCK_BASE_CLASS) != null;
+        return super.isAvailable(dataContext)
+                && LibrariesUtil.hasGroovySdk(module)
+                && (module != null && findJarWithClass(module, SpockConstants.SPOCK_BASE_CLASS) != null);
+    }
+
+    //todo: taken from 12 implementation LibrariesUtil.findJarWithClass, remove when retire 11.1 compatibility
+    @Nullable
+    public static VirtualFile findJarWithClass(@NotNull Module module, final String classQName) {
+        GlobalSearchScope scope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module);
+        for (PsiClass psiClass : JavaPsiFacade.getInstance(module.getProject()).findClasses(classQName, scope)) {
+            final VirtualFile local = JarFileSystem.getInstance().getVirtualFileForJar(psiClass.getContainingFile().getVirtualFile());
+            if (local != null) {
+                return local;
+            }
+        }
+        return null;
     }
 
     @Override

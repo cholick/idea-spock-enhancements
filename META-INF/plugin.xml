@@ -8,11 +8,12 @@
             <ul>
                 <li>Adds syntax highlighting to Spock labels</li>
                 <li>Provides inspections for label ordering</li>
-                <li>A collection of live templates for feature methods contributed by @fpape</li>
+                <li>A Spock spec template and a collection of live templates for feature methods contributed by @fpape</li>
+                <li>Code generation assistance in specs for setup, cleanup, and adding a test method contributed by @fpape</li>
             </ul>
         ]]>
     </description>
-    <version>0.4</version>
+    <version>0.5</version>
     <vendor>Matt Cholick</vendor>
 
     <depends>org.intellij.groovy</depends>
@@ -21,7 +22,10 @@
     <idea-version since-build="111.69"/>
 
     <application-components>
-
+        <component>
+            <implementation-class>com.cholick.idea.spock.adapter.SpockPluginLoader</implementation-class>
+            <interface-class>com.cholick.idea.spock.adapter.SpockPluginLoader</interface-class>
+        </component>
     </application-components>
 
     <project-components>
