@@ -63,7 +63,7 @@ public class SpockTestFramework extends JavaTestFramework {
     }
 
     //todo: taken from 12 implementation, remove when retire 11.1 compatibility
-    protected PsiMethod createSetUpPatternMethod(JVMElementFactory factory) {
+    public PsiMethod createSetUpPatternMethod(JVMElementFactory factory) {
         final FileTemplate template = FileTemplateManager.getInstance().getCodeTemplate(getSetUpMethodFileTemplateDescriptor().getFileName());
         return factory.createMethodFromText(StringUtil.replace(template.getText(), "${BODY}\n", ""), null);
     }
