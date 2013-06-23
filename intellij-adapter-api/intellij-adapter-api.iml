@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="groovy-1.8.9" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.9" level="application" />
   </component>
 </module>
 
