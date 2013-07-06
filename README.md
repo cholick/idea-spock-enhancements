@@ -1,3 +1,4 @@
+[![Stories in Ready](http://badge.waffle.io/mcholick/idea-spock-enhancements.png)](http://waffle.io/mcholick/idea-spock-enhancements)  
 #### Spock Enhancements
 
 A plugin for IntelliJ IDEA that improves integration with the Spock specification framework (http://code.google.com/p/spock/).
