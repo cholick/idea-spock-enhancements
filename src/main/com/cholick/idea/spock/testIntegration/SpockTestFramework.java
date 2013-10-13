@@ -29,7 +29,6 @@ import javax.swing.*;
 /**
  * User: fpape
  * Date: 6/6/13
- * Time: 9:45 PM
  */
 public class SpockTestFramework extends JavaTestFramework {
     private static final Logger LOG = Logger.getInstance(SpockTestFramework.class);
@@ -142,6 +141,11 @@ public class SpockTestFramework extends JavaTestFramework {
     @NotNull
     public Language getLanguage() {
         return GroovyFileType.GROOVY_LANGUAGE;
+    }
+
+    //only @Override in 13+
+    public char getMnemonic() {
+        return 'S';
     }
 
 }

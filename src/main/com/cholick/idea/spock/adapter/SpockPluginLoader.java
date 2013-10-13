@@ -1,8 +1,14 @@
 package com.cholick.idea.spock.adapter;
 
+import com.cholick.idea.spock.GrLabeledStatementAdapter;
+import com.cholick.idea.spock.GrLabeledStatementAdapter11;
+import com.cholick.idea.spock.GrLabeledStatementAdapter13;
 import com.cholick.idea.spock.GroovyIcons;
 import com.cholick.idea.spock.GroovyIcons11;
 import com.cholick.idea.spock.GroovyIcons12;
+import com.cholick.idea.spock.HighlightInfoFactory;
+import com.cholick.idea.spock.HighlightInfoFactory11;
+import com.cholick.idea.spock.HighlightInfoFactory13;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.impl.ComponentManagerImpl;
@@ -11,7 +17,7 @@ import org.picocontainer.MutablePicoContainer;
 
 public class SpockPluginLoader implements ApplicationComponent {
 
-    ComponentManagerImpl componentManager;
+    private ComponentManagerImpl componentManager;
 
     SpockPluginLoader(@NotNull ComponentManagerImpl componentManager) {
         this.componentManager = componentManager;
@@ -20,14 +26,9 @@ public class SpockPluginLoader implements ApplicationComponent {
     @Override
     public void initComponent() {
         MutablePicoContainer picoContainer = componentManager.getPicoContainer();
-        switch (getVersion()) {
-            case V11:
-                picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons11());
-                break;
-            case V12:
-            default:
-                picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons12());
-        }
+        registerGroovyIcons(picoContainer);
+        registerHighlightInfoFactory(picoContainer);
+        registerGrLabeledStatementAdapter(picoContainer);
     }
 
     @Override
@@ -40,15 +41,50 @@ public class SpockPluginLoader implements ApplicationComponent {
         return "Spock Framework Enhancements";
     }
 
-    private IntelliJVersion getVersion() {
-        if(ApplicationInfo.getInstance().getBuild().getBaselineVersion() < 123) {
-            return IntelliJVersion.V11;
+    private void registerGroovyIcons(MutablePicoContainer picoContainer) {
+        if (isAtLeast12()) {
+            picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons12());
+        } else {
+            picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons11());
         }
-        return IntelliJVersion.V12;
+    }
+
+    private void registerHighlightInfoFactory(MutablePicoContainer picoContainer) {
+        if (isAtLeast13()) {
+            picoContainer.registerComponentInstance(HighlightInfoFactory.class.getName(), new HighlightInfoFactory13());
+        } else {
+            picoContainer.registerComponentInstance(HighlightInfoFactory.class.getName(), new HighlightInfoFactory11());
+        }
+    }
+
+    private void registerGrLabeledStatementAdapter(MutablePicoContainer picoContainer) {
+        if (isAtLeast13()) {
+            picoContainer.registerComponentInstance(GrLabeledStatementAdapter.class.getName(), new GrLabeledStatementAdapter13());
+        } else {
+            picoContainer.registerComponentInstance(GrLabeledStatementAdapter.class.getName(), new GrLabeledStatementAdapter11());
+        }
+    }
+
+    private IntelliJVersion getVersion() {
+        int version = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
+        if (version >= 130) {
+            return IntelliJVersion.V13;
+        } else if (version >= 120) {
+            return IntelliJVersion.V12;
+        }
+        return IntelliJVersion.V11;
+    }
+
+    private boolean isAtLeast12() {
+        return getVersion().compareTo(IntelliJVersion.V12) >= 0;
+    }
+
+    private boolean isAtLeast13() {
+        return getVersion().compareTo(IntelliJVersion.V13) >= 0;
     }
 
     enum IntelliJVersion {
-        V11, V12
+        V11, V12, V13
     }
 
 }

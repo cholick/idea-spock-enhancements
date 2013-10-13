@@ -7,10 +7,8 @@
     </content>
     <orderEntry type="jdk" jdkName="$idea_sdk_name_12$" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.9" level="application" />
-    <orderEntry type="module" module-name="intellij-adapter-api" />
     <orderEntry type="module-library" scope="PROVIDED">
-      <library>
+      <library name="groovy_plugin">
         <CLASSES>
           <root url="file://$idea_sdk_12$/plugins/Groovy/lib" />
         </CLASSES>
@@ -19,6 +17,8 @@
         <jarDirectory url="file://$idea_sdk_12$/plugins/Groovy/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.9" level="application" />
+    <orderEntry type="module" module-name="intellij-adapter-api" />
   </component>
 </module>
 

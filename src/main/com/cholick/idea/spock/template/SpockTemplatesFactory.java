@@ -18,7 +18,6 @@ import java.util.Properties;
 /**
  * User: fpape
  * Date: 6/18/13
- * Time: 9:41 AM
  */
 public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory {
 

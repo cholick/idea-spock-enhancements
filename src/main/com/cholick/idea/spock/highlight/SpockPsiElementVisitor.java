@@ -1,17 +1,17 @@
 package com.cholick.idea.spock.highlight;
 
+import com.cholick.idea.spock.GrLabeledStatementAdapter;
+import com.cholick.idea.spock.HighlightInfoFactory;
 import com.cholick.idea.spock.config.SpockConfig;
 import com.cholick.idea.spock.data.SpockLabel;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
-import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
-import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.groovy.lang.psi.api.auxiliary.GrLabel;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.GrLabeledStatement;
 
 import java.awt.Font;
 
@@ -23,14 +23,18 @@ public class SpockPsiElementVisitor extends PsiElementVisitor {
     @Override
     public void visitElement(PsiElement element) {
         if (!highlightInfoHolder.hasErrorResults()) {
-            if (element instanceof GrLabel && SpockLabel.contains(element.getText())) {
-                highlightInfoHolder.add(createHighlightInfo(element));
+            if (element instanceof GrLabeledStatement) {
+                GrLabeledStatement labelElement = (GrLabeledStatement) element;
+                if (SpockLabel.contains(labelElement.getName())) {
+                    PsiElement label = GrLabeledStatementAdapter.getInstance().getLabel(labelElement);
+                    highlightInfoHolder.add(createHighlightInfo(label));
+                }
             }
         }
     }
 
     private HighlightInfo createHighlightInfo(@NotNull PsiElement element) {
-        return HighlightInfo.createHighlightInfo(SpockLabelHighlightInfoTypes.SPOCK_LABEL, element, null, buildTextAttributes());
+        return HighlightInfoFactory.getInstance().createHighlightInfo(SpockLabelHighlightInfoTypes.SPOCK_LABEL, element, null, buildTextAttributes());
     }
 
     private TextAttributes buildTextAttributes() {

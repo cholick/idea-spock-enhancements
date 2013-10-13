@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 /**
  * User: fpape
  * Date: 6/13/13
- * Time: 6:00 PM
  */
 public class SpockLiveTemplatesProvider implements DefaultLiveTemplatesProvider {
     @Override

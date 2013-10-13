@@ -1,6 +1,6 @@
 package com.cholick.idea.spock.data;
 
-import org.jetbrains.plugins.groovy.lang.psi.api.auxiliary.GrLabel;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.GrLabeledStatement;
 
 import java.util.EnumSet;
 import java.util.LinkedList;
@@ -75,12 +75,12 @@ public enum SpockLabel {
         return stringValues.contains(label);
     }
 
-    public static boolean contains(GrLabel label) {
-        return stringValues.contains(label.getText().toLowerCase());
+    public static boolean contains(GrLabeledStatement label) {
+        return stringValues.contains(label.getName().toLowerCase());
     }
 
-    public static SpockLabel valueOf(GrLabel label) {
-        return valueOf(label.getText().toUpperCase());
+    public static SpockLabel valueOf(GrLabeledStatement label) {
+        return valueOf(label.getName().toUpperCase());
     }
 
 }

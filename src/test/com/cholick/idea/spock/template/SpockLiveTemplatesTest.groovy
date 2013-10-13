@@ -11,7 +11,6 @@ import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 /**
  * User: fpape
  * Date: 6/13/13
- * Time: 6:06 PM
  */
 class SpockLiveTemplatesTest extends LightCodeInsightFixtureTestCase {
 

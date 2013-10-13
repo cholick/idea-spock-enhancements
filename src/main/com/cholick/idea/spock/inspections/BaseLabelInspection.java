@@ -1,5 +1,6 @@
 package com.cholick.idea.spock.inspections;
 
+import com.cholick.idea.spock.GrLabeledStatementAdapter;
 import com.cholick.idea.spock.data.SpockLabel;
 import com.cholick.idea.spock.util.SpockClassCheck;
 import com.intellij.psi.PsiElement;
@@ -7,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.groovy.codeInspection.BaseInspection;
 import org.jetbrains.plugins.groovy.codeInspection.BaseInspectionVisitor;
-import org.jetbrains.plugins.groovy.lang.psi.api.auxiliary.GrLabel;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.GrLabeledStatement;
 
 public abstract class BaseLabelInspection extends BaseInspection {
@@ -58,28 +58,29 @@ public abstract class BaseLabelInspection extends BaseInspection {
             boolean isSpockClass = overrideSpockClassCheck
                     || new SpockClassCheck(labeledStatement.getContainingFile()).getIsSpockClass();
             if (isSpockClass && isSpockLabel(labeledStatement)) {
-                GrLabel nextLabel = getNextLabel(labeledStatement.getNextSibling());
+                GrLabeledStatement nextLabel = getNextLabel(labeledStatement.getNextSibling());
                 if (nextLabel != null) {
                     checkSuccessorValid(nextLabel);
                 }
             }
         }
 
-        private GrLabel getNextLabel(@Nullable PsiElement element) {
-            GrLabel nextLabel = null;
+        private GrLabeledStatement getNextLabel(@Nullable PsiElement element) {
+            GrLabeledStatement nextLabel = null;
             while (element != null && nextLabel == null) {
                 element = element.getNextSibling();
                 if (element instanceof GrLabeledStatement) {
-                    nextLabel = ((GrLabeledStatement) element).getLabel();
+                    nextLabel = ((GrLabeledStatement) element);
                 }
             }
             return nextLabel;
         }
 
-        private void checkSuccessorValid(@NotNull GrLabel nextLabel) {
-            if (SpockLabel.contains(nextLabel)) {
-                SpockLabel nextSpockLabel = SpockLabel.valueOf(nextLabel);
+        private void checkSuccessorValid(@NotNull GrLabeledStatement nextLabeledStatement) {
+            if (SpockLabel.contains(nextLabeledStatement)) {
+                SpockLabel nextSpockLabel = SpockLabel.valueOf(nextLabeledStatement);
                 if (!spockLabel.getSuccessors().contains(nextSpockLabel)) {
+                    PsiElement nextLabel = GrLabeledStatementAdapter.getInstance().getLabel(nextLabeledStatement);
                     registerError(nextLabel);
                 }
             } else {
@@ -88,7 +89,8 @@ public abstract class BaseLabelInspection extends BaseInspection {
         }
 
         private boolean isSpockLabel(@NotNull GrLabeledStatement labeledStatement) {
-            return labeledStatement.getLabel().getText().toLowerCase().equals(spockLabel.toString());
+            String label = labeledStatement.getName() != null ? labeledStatement.getName() : "";
+            return label.toLowerCase().equals(spockLabel.toString());
         }
 
     }

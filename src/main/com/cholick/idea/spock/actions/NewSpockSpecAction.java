@@ -35,7 +35,6 @@ import org.jetbrains.plugins.groovy.util.LibrariesUtil;
 /**
  * User: fpape
  * Date: 6/18/13
- * Time: 10:34 AM
  */
 public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrTypeDefinition> implements DumbAware {
 

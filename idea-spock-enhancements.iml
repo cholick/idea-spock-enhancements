@@ -13,27 +13,28 @@
     <orderEntry type="module-library" scope="PROVIDED">
       <library name="groovy_plugin">
         <CLASSES>
-          <root url="file://$idea_sdk$/plugins/Groovy/lib" />
+          <root url="file://$idea_sdk_13$/plugins/Groovy/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$idea_sdk$/plugins/Groovy/lib" recursive="false" />
+        <jarDirectory url="file://$idea_sdk_13$/plugins/Groovy/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library name="properties_plugin">
         <CLASSES>
-          <root url="file://$idea_sdk$/plugins/properties/lib" />
+          <root url="file://$idea_sdk_13$/plugins/properties/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$idea_sdk$/plugins/properties/lib" recursive="false" />
+        <jarDirectory url="file://$idea_sdk_13$/plugins/properties/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.9" level="application" />
+    <orderEntry type="module" module-name="intellij-adapter-api" />
     <orderEntry type="module" module-name="intellij-adapter-11" />
     <orderEntry type="module" module-name="intellij-adapter-12" />
-    <orderEntry type="module" module-name="intellij-adapter-api" />
+    <orderEntry type="module" module-name="intellij-adapter-13" />
   </component>
 </module>
 
