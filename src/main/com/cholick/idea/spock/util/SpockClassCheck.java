@@ -1,6 +1,5 @@
 package com.cholick.idea.spock.util;
 
-import com.cholick.idea.spock.testIntegration.SpockTestFramework;
 import com.intellij.openapi.util.Condition;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;

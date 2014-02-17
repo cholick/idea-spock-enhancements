@@ -20,7 +20,7 @@ public class BaseLabelInspectionVisitor extends BaseInspectionVisitor {
     @Override
     public void visitLabeledStatement(GrLabeledStatement labeledStatement) {
         super.visitLabeledStatement(labeledStatement);
-        if (getInSpockClass(labeledStatement) && isSpockLabel(labeledStatement)) {
+        if (labeledStatement != null && getInSpockClass(labeledStatement) && isSpockLabel(labeledStatement)) {
             GrLabeledStatement nextLabeledStatement = getNextLabel(labeledStatement.getNextSibling());
             doVisitLabeledStatement(labeledStatement, nextLabeledStatement);
         }
@@ -35,7 +35,7 @@ public class BaseLabelInspectionVisitor extends BaseInspectionVisitor {
         return label.toLowerCase().equals(spockLabel.toString());
     }
 
-    protected void doVisitLabeledStatement(GrLabeledStatement labeledStatement, GrLabeledStatement nextLabeledStatement) {
+    protected void doVisitLabeledStatement(@NotNull GrLabeledStatement labeledStatement, GrLabeledStatement nextLabeledStatement) {
         if (nextLabeledStatement != null) {
             checkSuccessorValid(nextLabeledStatement);
         }

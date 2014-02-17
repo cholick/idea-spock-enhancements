@@ -1,4 +1,5 @@
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class TestSpec extends Specification {
 
@@ -35,20 +36,28 @@ class TestSpec extends Specification {
         println 'b'
     }
 
-    def "Test setup"() {
-        setup:
-
-        given:
-
-
-    }
-
     def "When only"() {
         when:
         def b = 2
 
         and:
         def a = b
+    }
+
+
+    def "Parameterization (positive)"() {
+        expect:
+        a
+        where:
+        a << [0, 1, 2]
+    }
+
+    @Unroll
+    def "Parameterization (negative)"() {
+        expect:
+        a
+        where:
+        a << [0, 1, 2]
     }
 
 }

@@ -50,7 +50,7 @@ public class WhenThenInspection extends BaseInspection {
         }
 
         @Override
-        protected void doVisitLabeledStatement(GrLabeledStatement labeledStatement, GrLabeledStatement nextLabeledStatement) {
+        protected void doVisitLabeledStatement(@NotNull GrLabeledStatement labeledStatement, GrLabeledStatement nextLabeledStatement) {
             while(nextLabeledStatement != null && SpockLabel.valueOf(nextLabeledStatement) == SpockLabel.AND) {
                 nextLabeledStatement = getNextLabel(nextLabeledStatement);
             }

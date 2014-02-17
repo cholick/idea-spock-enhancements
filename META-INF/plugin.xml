@@ -13,7 +13,7 @@
             </ul>
         ]]>
     </description>
-    <version>0.7</version>
+    <version>0.8</version>
     <vendor>Matt Cholick</vendor>
 
     <depends>org.intellij.groovy</depends>
@@ -72,6 +72,9 @@
         <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
                          shortName="SpWhereInspection" displayName="Where block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhereInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhereUnrollInspection" displayName="Where block features use @Unroll" enabledByDefault="false"
+                         level="WARNING" implementationClass="com.cholick.idea.spock.inspections.WhereUnrollInspection"/>
     </extensions>
 
     <actions>
