@@ -2,7 +2,7 @@ package com.cholick.idea.spock.inspections
 
 import org.jetbrains.plugins.groovy.GroovyFileType
 
-class WhenInspectionTest extends BaseInspectionTest {
+class WhenThenInspectionTest extends BaseInspectionTest {
 
     public void testNoHighlight() {
         String spockMethod = makeSpecFile('''
@@ -15,44 +15,44 @@ class WhenInspectionTest extends BaseInspectionTest {
         ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new WhenInspection()
+        WhenThenInspection inspection = new WhenThenInspection()
         myFixture.enableInspections(inspection)
 
         assertFalse(hasHighlightingFor('then', myFixture.doHighlighting(), inspection))
     }
 
-    public void testHighlightForCleanup() {
+    public void testNoHighlightAnd() {
         String spockMethod = makeSpecFile('''
             def test() {
                 when:
                 def a = 1
-                cleanup:
-                a == 1
+                and:
+                a = 2
+                then:
+                a == 2
             }
         ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new WhenInspection()
+        WhenThenInspection inspection = new WhenThenInspection()
         myFixture.enableInspections(inspection)
 
-        assertTrue(hasHighlightingFor('cleanup', myFixture.doHighlighting(), inspection))
+        assertFalse(hasHighlightingFor('then', myFixture.doHighlighting(), inspection))
     }
 
-    public void testHighlightForExpect() {
+    public void testHighlightMethodEnd() {
         String spockMethod = makeSpecFile('''
             def test() {
                 when:
                 def a = 1
-                expect:
-                a == 1
             }
         ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new WhenInspection()
+        WhenThenInspection inspection = new WhenThenInspection()
         myFixture.enableInspections(inspection)
 
-        assertTrue(hasHighlightingFor('expect', myFixture.doHighlighting(), inspection))
+        assertTrue(hasHighlightingFor('when', myFixture.doHighlighting(), inspection))
     }
 
 }

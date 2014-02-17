@@ -43,4 +43,12 @@ class TestSpec extends Specification {
 
     }
 
+    def "When only"() {
+        when:
+        def b = 2
+
+        and:
+        def a = b
+    }
+
 }

@@ -5,15 +5,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class CleanupInspection extends BaseLabelInspection {
 
-    public CleanupInspection() {
-        super();
-    }
-
-    public CleanupInspection(boolean overrideSpockClassCheck) {
-        super();
-        this.overrideSpockClassCheck = overrideSpockClassCheck;
-    }
-
     @NotNull
     protected SpockLabel getSpockLabel() {
         return SpockLabel.CLEANUP;

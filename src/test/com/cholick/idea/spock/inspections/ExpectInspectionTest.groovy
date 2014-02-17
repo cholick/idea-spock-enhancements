@@ -5,7 +5,7 @@ import org.jetbrains.plugins.groovy.GroovyFileType
 class ExpectInspectionTest extends BaseInspectionTest {
 
     public void testNoHighlight() {
-        String spockMethod = '''
+        String spockMethod = makeSpecFile('''
             def test() {
                 given:
                 expect:
@@ -13,17 +13,17 @@ class ExpectInspectionTest extends BaseInspectionTest {
                 cleanup:
                 a = null
             }
-        '''
+        ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new ExpectInspection(true)
+        BaseLabelInspection inspection = new ExpectInspection()
         myFixture.enableInspections(inspection)
 
         assertFalse(hasHighlightingFor('cleanup', myFixture.doHighlighting(), inspection))
     }
 
     public void testHighlightForGiven() {
-        String spockMethod = '''
+        String spockMethod = makeSpecFile('''
             def test() {
                 setup:
                 def a = 1
@@ -32,17 +32,17 @@ class ExpectInspectionTest extends BaseInspectionTest {
                 given:
                 a = null
             }
-        '''
+        ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new ExpectInspection(true)
+        BaseLabelInspection inspection = new ExpectInspection()
         myFixture.enableInspections(inspection)
 
         assertTrue(hasHighlightingFor('given', myFixture.doHighlighting(), inspection))
     }
 
     public void testHighlightForThen() {
-        String spockMethod = '''
+        String spockMethod = makeSpecFile('''
             def test() {
                 given:
                 def a = 1
@@ -51,10 +51,10 @@ class ExpectInspectionTest extends BaseInspectionTest {
                 then:
                 a = null
             }
-        '''
+        ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new ExpectInspection(true)
+        BaseLabelInspection inspection = new ExpectInspection()
         myFixture.enableInspections(inspection)
 
         assertTrue(hasHighlightingFor('then', myFixture.doHighlighting(), inspection))

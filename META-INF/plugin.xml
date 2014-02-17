@@ -61,6 +61,9 @@
                          shortName="SpWhenInspection" displayName="When block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhenInspection"/>
         <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhenThenInspection" displayName="When has corresponding Then" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhenThenInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
                          shortName="SpThenInspection" displayName="Then block successor" enabledByDefault="true"
                          level="ERROR" implementationClass="com.cholick.idea.spock.inspections.ThenInspection"/>
         <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"

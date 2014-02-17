@@ -5,7 +5,7 @@ import org.jetbrains.plugins.groovy.GroovyFileType
 class ThenInspectionTest extends BaseInspectionTest {
 
     public void testNoHighlight() {
-        String spockMethod = '''
+        String spockMethod = makeSpecFile('''
             def test() {
                 when:
                 def a = 1
@@ -14,17 +14,17 @@ class ThenInspectionTest extends BaseInspectionTest {
                 cleanup:
                 a = null
             }
-        '''
+        ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new ThenInspection(true)
+        BaseLabelInspection inspection = new ThenInspection()
         myFixture.enableInspections(inspection)
 
         assertFalse(hasHighlightingFor('cleanup', myFixture.doHighlighting(), inspection))
     }
 
     public void testHighlightForSetup() {
-        String spockMethod = '''
+        String spockMethod = makeSpecFile('''
             def test() {
                 when:
                 def a = 1
@@ -33,10 +33,10 @@ class ThenInspectionTest extends BaseInspectionTest {
                 setup:
                 a = null
             }
-        '''
+        ''')
 
         myFixture.configureByText(GroovyFileType.GROOVY_FILE_TYPE, spockMethod)
-        BaseLabelInspection inspection = new ThenInspection(true)
+        BaseLabelInspection inspection = new ThenInspection()
         myFixture.enableInspections(inspection)
 
         assertTrue(hasHighlightingFor('setup', myFixture.doHighlighting(), inspection))

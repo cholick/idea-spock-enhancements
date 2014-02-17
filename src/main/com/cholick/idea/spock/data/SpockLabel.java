@@ -80,7 +80,11 @@ public enum SpockLabel {
     }
 
     public static SpockLabel valueOf(GrLabeledStatement label) {
-        return valueOf(label.getName().toUpperCase());
+        try {
+            return valueOf(label.getName().toUpperCase());
+        } catch (IllegalArgumentException iae) {
+            return null;
+        }
     }
 
 }
