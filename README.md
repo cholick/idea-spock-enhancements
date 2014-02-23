@@ -1,7 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/mcholick/idea-spock-enhancements.png)](https://waffle.io/mcholick/idea-spock-enhancements)  
 #### Spock Enhancements
 
-A plugin for IntelliJ IDEA that improves integration with the Spock specification framework (http://code.google.com/p/spock/).
+A [plugin for IntelliJ IDEA](http://plugins.jetbrains.com/plugin/7114) that improves integration with the Spock specification framework (http://code.google.com/p/spock/).
 
 #### Features
 * Font changes for the Spock labels. The font change can be configured under IDE Settings -> Spock.
