@@ -1,6 +1,7 @@
 package com.cholick.idea.spock.testIntegration;
 
 import com.cholick.idea.spock.GroovyIcons;
+import com.cholick.idea.spock.LanguageLookup;
 import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.execution.junit.JUnitUtil;
 import com.intellij.ide.fileTemplates.FileTemplate;
@@ -20,16 +21,11 @@ import com.intellij.psi.util.PsiUtil;
 import com.intellij.testIntegration.JavaTestFramework;
 import com.intellij.util.IncorrectOperationException;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.groovy.GroovyFileType;
 import org.jetbrains.plugins.groovy.lang.psi.GroovyPsiElementFactory;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 
-/**
- * User: fpape
- * Date: 6/6/13
- */
 public class SpockTestFramework extends JavaTestFramework {
     private static final Logger LOG = Logger.getInstance(SpockTestFramework.class);
 
@@ -41,7 +37,7 @@ public class SpockTestFramework extends JavaTestFramework {
 
     @Override
     protected boolean isTestClass(PsiClass clazz, boolean canBePotential) {
-        return clazz.getLanguage() == GroovyFileType.GROOVY_LANGUAGE &&
+        return clazz.getLanguage() == LanguageLookup.getInstance().groovy() &&
                 InheritanceUtil.isInheritor(clazz, SpockConstants.SPOCK_BASE_CLASS);
     }
 
@@ -69,7 +65,7 @@ public class SpockTestFramework extends JavaTestFramework {
 
     @Override
     protected PsiMethod findOrCreateSetUpMethod(PsiClass clazz) throws IncorrectOperationException {
-        LOG.assertTrue(clazz.getLanguage() == GroovyFileType.GROOVY_LANGUAGE);
+        LOG.assertTrue(clazz.getLanguage() == LanguageLookup.getInstance().groovy());
         final GroovyPsiElementFactory factory = GroovyPsiElementFactory.getInstance(clazz.getProject());
 
         final PsiMethod patternMethod = createSetUpPatternMethod(factory);
@@ -140,7 +136,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @Override
     @NotNull
     public Language getLanguage() {
-        return GroovyFileType.GROOVY_LANGUAGE;
+        return LanguageLookup.getInstance().groovy();
     }
 
     //only @Override in 13+

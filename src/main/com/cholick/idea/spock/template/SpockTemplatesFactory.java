@@ -1,7 +1,12 @@
 package com.cholick.idea.spock.template;
 
 import com.cholick.idea.spock.GroovyIcons;
-import com.intellij.ide.fileTemplates.*;
+import com.intellij.ide.fileTemplates.FileTemplate;
+import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
+import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
+import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory;
+import com.intellij.ide.fileTemplates.FileTemplateManager;
+import com.intellij.ide.fileTemplates.JavaTemplateUtil;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiFile;
@@ -15,10 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Properties;
 
-/**
- * User: fpape
- * Date: 6/18/13
- */
 public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory {
 
     public void registerCustromTemplates(String... templates) {
@@ -83,4 +84,5 @@ public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory
     public String[] getCustomTemplates() {
         return ArrayUtil.toStringArray(myCustomTemplates);
     }
+
 }

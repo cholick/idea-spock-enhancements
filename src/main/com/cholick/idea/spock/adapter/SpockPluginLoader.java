@@ -9,6 +9,9 @@ import com.cholick.idea.spock.GroovyIcons12;
 import com.cholick.idea.spock.HighlightInfoFactory;
 import com.cholick.idea.spock.HighlightInfoFactory11;
 import com.cholick.idea.spock.HighlightInfoFactory13;
+import com.cholick.idea.spock.LanguageLookup;
+import com.cholick.idea.spock.LanguageLookup11;
+import com.cholick.idea.spock.LanguageLookup14;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.impl.ComponentManagerImpl;
@@ -29,6 +32,7 @@ public class SpockPluginLoader implements ApplicationComponent {
         registerGroovyIcons(picoContainer);
         registerHighlightInfoFactory(picoContainer);
         registerGrLabeledStatementAdapter(picoContainer);
+        registerLanguageLookup(picoContainer);
     }
 
     @Override
@@ -65,9 +69,19 @@ public class SpockPluginLoader implements ApplicationComponent {
         }
     }
 
+    private void registerLanguageLookup(MutablePicoContainer picoContainer) {
+        if(isAtLeast14()) {
+            picoContainer.registerComponentInstance(LanguageLookup.class.getName(), new LanguageLookup14());
+        } else {
+            picoContainer.registerComponentInstance(LanguageLookup.class.getName(), new LanguageLookup11());
+        }
+    }
+
     private IntelliJVersion getVersion() {
         int version = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
-        if (version >= 130) {
+        if (version >= 138) {
+            return IntelliJVersion.V14;
+        } else if (version >= 130) {
             return IntelliJVersion.V13;
         } else if (version >= 120) {
             return IntelliJVersion.V12;
@@ -83,8 +97,12 @@ public class SpockPluginLoader implements ApplicationComponent {
         return getVersion().compareTo(IntelliJVersion.V13) >= 0;
     }
 
+    private boolean isAtLeast14() {
+        return getVersion().compareTo(IntelliJVersion.V14) >= 0;
+    }
+
     enum IntelliJVersion {
-        V11, V12, V13
+        V11, V12, V13, V14
     }
 
 }

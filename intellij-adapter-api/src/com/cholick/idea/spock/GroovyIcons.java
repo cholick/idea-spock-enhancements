@@ -2,7 +2,7 @@ package com.cholick.idea.spock;
 
 import com.intellij.openapi.components.ServiceManager;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public abstract class GroovyIcons {
 

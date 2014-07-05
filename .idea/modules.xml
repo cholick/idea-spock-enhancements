@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/intellij-adapter-11/intellij-adapter-11.iml" filepath="$PROJECT_DIR$/intellij-adapter-11/intellij-adapter-11.iml" />
       <module fileurl="file://$PROJECT_DIR$/intellij-adapter-12/intellij-adapter-12.iml" filepath="$PROJECT_DIR$/intellij-adapter-12/intellij-adapter-12.iml" />
       <module fileurl="file://$PROJECT_DIR$/intellij-adapter-13/intellij-adapter-13.iml" filepath="$PROJECT_DIR$/intellij-adapter-13/intellij-adapter-13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellij-adapter-14/intellij-adapter-14.iml" filepath="$PROJECT_DIR$/intellij-adapter-14/intellij-adapter-14.iml" />
       <module fileurl="file://$PROJECT_DIR$/intellij-adapter-api/intellij-adapter-api.iml" filepath="$PROJECT_DIR$/intellij-adapter-api/intellij-adapter-api.iml" />
     </modules>
   </component>
