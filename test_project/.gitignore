@@ -2,6 +2,8 @@
 **~
 
 .gradle
+build
+
 .idea
 *.iml
 libs

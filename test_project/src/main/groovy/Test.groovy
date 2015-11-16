@@ -8,6 +8,7 @@ class Test {
             given:
             when:
             then:
+            println 'Hello'
         }
 
     }
