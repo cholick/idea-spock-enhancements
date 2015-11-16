@@ -7,9 +7,14 @@ import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.actions.CreateFileFromTemplateDialog;
 import com.intellij.ide.actions.JavaCreateTemplateInPackageAction;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
@@ -32,10 +37,6 @@ import org.jetbrains.plugins.groovy.lang.psi.GroovyFile;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.typedef.GrTypeDefinition;
 import org.jetbrains.plugins.groovy.util.LibrariesUtil;
 
-/**
- * User: fpape
- * Date: 6/18/13
- */
 public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrTypeDefinition> implements DumbAware {
 
     public NewSpockSpecAction() {
@@ -53,8 +54,14 @@ public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrType
     protected boolean isAvailable(DataContext dataContext) {
         Module module = LangDataKeys.MODULE.getData(dataContext);
         return super.isAvailable(dataContext)
+                && module != null
                 && LibrariesUtil.hasGroovySdk(module)
-                && (module != null && findJarWithClass(module, SpockConstants.SPOCK_BASE_CLASS) != null);
+                && hasSpockOnClasspath(module);
+    }
+
+    protected boolean hasSpockOnClasspath(Module module) {
+        return !DumbService.getInstance(module.getProject()).isDumb()
+                && findJarWithClass(module, SpockConstants.SPOCK_BASE_CLASS) != null;
     }
 
     //todo: taken from 12 implementation LibrariesUtil.findJarWithClass, remove when retire 11.1 compatibility
@@ -84,12 +91,18 @@ public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrType
     public void update(AnActionEvent e) {
         super.update(e);
         Presentation presentation = e.getPresentation();
-        if (!presentation.isVisible()) return;
+        if (!presentation.isVisible()) {
+            return;
+        }
 
         IdeView view = LangDataKeys.IDE_VIEW.getData(e.getDataContext());
-        if (view == null) return;
+        if (view == null) {
+            return;
+        }
         Project project = PlatformDataKeys.PROJECT.getData(e.getDataContext());
-        if (project == null) return;
+        if (project == null) {
+            return;
+        }
 
         ProjectFileIndex projectFileIndex = ProjectRootManager.getInstance(project).getFileIndex();
         for (PsiDirectory dir : view.getDirectories()) {
