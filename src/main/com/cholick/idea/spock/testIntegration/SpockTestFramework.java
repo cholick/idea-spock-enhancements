@@ -1,7 +1,7 @@
 package com.cholick.idea.spock.testIntegration;
 
-import com.cholick.idea.spock.GroovyIcons;
 import com.cholick.idea.spock.LanguageLookup;
+import com.cholick.idea.spock.util.Icons;
 import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.execution.junit.JUnitUtil;
 import com.intellij.ide.fileTemplates.FileTemplate;
@@ -101,7 +101,7 @@ public class SpockTestFramework extends JavaTestFramework {
     @NotNull
     @Override
     public Icon getIcon() {
-        return GroovyIcons.getInstance().getGroovy16Icon();
+        return Icons.getGroovyIcon();
     }
 
     @NotNull

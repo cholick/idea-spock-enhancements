@@ -8,16 +8,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="$idea_sdk_name_13$" jdkType="IDEA JDK" />
+    <orderEntry type="jdk" jdkName="IDEA 13 IC-133.696" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="groovy-1.8.9" level="application" />
     <orderEntry type="module" module-name="intellij-adapter-api" />
     <orderEntry type="module" module-name="intellij-adapter-11" />
-    <orderEntry type="module" module-name="intellij-adapter-12" />
     <orderEntry type="module" module-name="intellij-adapter-13" />
     <orderEntry type="module" module-name="intellij-adapter-14" />
-    <orderEntry type="library" scope="PROVIDED" name="groovy_plugin_13" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="properties_plugin_13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="groovy_plugin_16" level="project" />
   </component>
 </module>
-

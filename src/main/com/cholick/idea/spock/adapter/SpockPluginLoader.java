@@ -3,9 +3,6 @@ package com.cholick.idea.spock.adapter;
 import com.cholick.idea.spock.GrLabeledStatementAdapter;
 import com.cholick.idea.spock.GrLabeledStatementAdapter11;
 import com.cholick.idea.spock.GrLabeledStatementAdapter13;
-import com.cholick.idea.spock.GroovyIcons;
-import com.cholick.idea.spock.GroovyIcons11;
-import com.cholick.idea.spock.GroovyIcons12;
 import com.cholick.idea.spock.HighlightInfoFactory;
 import com.cholick.idea.spock.HighlightInfoFactory11;
 import com.cholick.idea.spock.HighlightInfoFactory13;
@@ -29,7 +26,6 @@ public class SpockPluginLoader implements ApplicationComponent {
     @Override
     public void initComponent() {
         MutablePicoContainer picoContainer = componentManager.getPicoContainer();
-        registerGroovyIcons(picoContainer);
         registerHighlightInfoFactory(picoContainer);
         registerGrLabeledStatementAdapter(picoContainer);
         registerLanguageLookup(picoContainer);
@@ -43,14 +39,6 @@ public class SpockPluginLoader implements ApplicationComponent {
     @NotNull
     public String getComponentName() {
         return "Spock Framework Enhancements";
-    }
-
-    private void registerGroovyIcons(MutablePicoContainer picoContainer) {
-        if (isAtLeast12()) {
-            picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons12());
-        } else {
-            picoContainer.registerComponentInstance(GroovyIcons.class.getName(), new GroovyIcons11());
-        }
     }
 
     private void registerHighlightInfoFactory(MutablePicoContainer picoContainer) {
@@ -70,7 +58,7 @@ public class SpockPluginLoader implements ApplicationComponent {
     }
 
     private void registerLanguageLookup(MutablePicoContainer picoContainer) {
-        if(isAtLeast14()) {
+        if (isAtLeast14()) {
             picoContainer.registerComponentInstance(LanguageLookup.class.getName(), new LanguageLookup14());
         } else {
             picoContainer.registerComponentInstance(LanguageLookup.class.getName(), new LanguageLookup11());
@@ -79,7 +67,11 @@ public class SpockPluginLoader implements ApplicationComponent {
 
     private IntelliJVersion getVersion() {
         int version = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
-        if (version >= 138) {
+        if (version >= 145) {
+            return IntelliJVersion.V16;
+        } else if (version >= 143) {
+            return IntelliJVersion.V15;
+        } else if (version >= 138) {
             return IntelliJVersion.V14;
         } else if (version >= 130) {
             return IntelliJVersion.V13;
@@ -87,10 +79,6 @@ public class SpockPluginLoader implements ApplicationComponent {
             return IntelliJVersion.V12;
         }
         return IntelliJVersion.V11;
-    }
-
-    private boolean isAtLeast12() {
-        return getVersion().compareTo(IntelliJVersion.V12) >= 0;
     }
 
     private boolean isAtLeast13() {
@@ -102,7 +90,7 @@ public class SpockPluginLoader implements ApplicationComponent {
     }
 
     enum IntelliJVersion {
-        V11, V12, V13, V14
+        V11, V12, V13, V14, V15, V16
     }
 
 }

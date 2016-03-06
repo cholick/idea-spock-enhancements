@@ -1,8 +1,8 @@
 package com.cholick.idea.spock.actions;
 
-import com.cholick.idea.spock.GroovyIcons;
 import com.cholick.idea.spock.template.SpockTemplates;
 import com.cholick.idea.spock.template.SpockTemplatesFactory;
+import com.cholick.idea.spock.util.Icons;
 import com.cholick.idea.spock.util.SpockConstants;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.actions.CreateFileFromTemplateDialog;
@@ -40,14 +40,14 @@ import org.jetbrains.plugins.groovy.util.LibrariesUtil;
 public class NewSpockSpecAction extends JavaCreateTemplateInPackageAction<GrTypeDefinition> implements DumbAware {
 
     public NewSpockSpecAction() {
-        super("Spock Specification", "Create new Spock Specification", GroovyIcons.getInstance().getClassIcon(), true);
+        super("Spock Specification", "Create new Spock Specification", Icons.getGroovyIcon(), true);
     }
 
     @Override
     protected void buildDialog(Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
         builder
                 .setTitle(GroovyBundle.message("newclass.dlg.title"))
-                .addKind("Class", GroovyIcons.getInstance().getClassIcon(), SpockTemplates.SPOCK_SPEC);
+                .addKind("Class", Icons.getGroovyIcon(), SpockTemplates.SPOCK_SPEC);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.cholick.idea.spock.template;
 
-import com.cholick.idea.spock.GroovyIcons;
+import com.cholick.idea.spock.util.Icons;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
 import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
@@ -41,7 +41,7 @@ public class SpockTemplatesFactory implements FileTemplateGroupDescriptorFactory
     static final String LOW_CASE_NAME_TEMPLATE_PROPERTY = "lowCaseName";
 
     public FileTemplateGroupDescriptor getFileTemplatesDescriptor() {
-        final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor("Spock", GroovyIcons.getInstance().getGroovy16Icon());
+        final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor("Spock", Icons.getGroovyIcon());
         final FileTypeManager fileTypeManager = FileTypeManager.getInstance();
         group.addTemplate(new FileTemplateDescriptor(SpockTemplates.SPOCK_SPEC, fileTypeManager.getFileTypeByFileName(SpockTemplates.SPOCK_SPEC).getIcon()));
 
