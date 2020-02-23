@@ -1,0 +1,82 @@
+
+<idea-plugin>
+    <id>com.cholick.idea.spock</id>
+    <name>Spock Framework Enhancements</name>
+    <description>
+        <![CDATA[
+            <p>
+                This plugin provides support for the Spock specification framework.
+            </p>
+            <ul>
+                <li>Adds syntax highlighting to Spock labels</li>
+                <li>Provides inspections for label ordering</li>
+                <li>A Spock spec template and a collection of live templates for feature methods contributed by @fpape</li>
+                <li>Code generation assistance in specs for setup, cleanup, and adding a test method contributed by @fpape</li>
+            </ul>
+        ]]>
+    </description>
+    <version>0.12</version>
+    <vendor>Matt Cholick</vendor>
+
+    <depends>org.intellij.groovy</depends>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="182"/>
+
+    <project-components>
+    </project-components>
+
+    <actions>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <liveTemplateContext implementation="com.cholick.idea.spock.template.SpockTemplateContextType"/>
+
+        <defaultLiveTemplatesProvider implementation="com.cholick.idea.spock.template.SpockLiveTemplatesProvider"/>
+
+        <fileTemplateGroup implementation="com.cholick.idea.spock.template.SpockTemplatesFactory"/>
+
+        <testFramework implementation="com.cholick.idea.spock.testIntegration.SpockTestFramework" order="first"/>
+
+        <highlightVisitor implementation="com.cholick.idea.spock.highlight.SpockHighlightVisitor"/>
+        <applicationConfigurable instance="com.cholick.idea.spock.config.SpockConfigForm"/>
+        <applicationService serviceInterface="com.cholick.idea.spock.config.SpockConfig"
+                            serviceImplementation="com.cholick.idea.spock.config.SpockConfig"/>
+
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpSetupInspection" displayName="Setup block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.SetupInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpGivenInspection" displayName="Given block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.GivenInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpExpectInspection" displayName="Expect block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.ExpectInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhenInspection" displayName="When block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhenInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhenThenInspection" displayName="When has corresponding Then" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhenThenInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpThenInspection" displayName="Then block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.ThenInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpCleanupInspection" displayName="Cleanup block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.CleanupInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhereInspection" displayName="Where block successor" enabledByDefault="true"
+                         level="ERROR" implementationClass="com.cholick.idea.spock.inspections.WhereInspection"/>
+        <localInspection language="Groovy" groupPath="Groovy" groupName="Spock"
+                         shortName="SpWhereUnrollInspection" displayName="Where block features use @Unroll" enabledByDefault="false"
+                         level="WARNING" implementationClass="com.cholick.idea.spock.inspections.WhereUnrollInspection"/>
+    </extensions>
+
+    <actions>
+        <action id="Spock.NewSpec" class="com.cholick.idea.spock.actions.NewSpockSpecAction"
+                text="Spock Specification" description="Create new Spock Specification">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewGroup1"/>
+        </action>
+    </actions>
+
+</idea-plugin>
