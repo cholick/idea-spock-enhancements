@@ -19,15 +19,3 @@ A [plugin for IntelliJ IDEA](http://plugins.jetbrains.com/plugin/7114) that impr
 #### Building
 
 Visit http://www.jetbrains.org/display/IJOS/Writing+Plug-ins for instructions on configuring your IDE to build plugins.
-
-##### Project variables
-* **idea_sdk** For library paths. Set to a current IntelliJ installation path (e.g. ```/Applications/IntelliJ IDEA 12 CE.app```)
-* **idea_sdk_11** For intelij-adapter-11 library paths. Set to IntelliJ 11 installation. (e.g. ```/Applications/IntelliJ IDEA 11.1 CE.app```)
-* **idea_sdk_12** For intelij-adapter-12 library paths. Set to IntelliJ 12 installation. (e.g. ```/Applications/IntelliJ IDEA 12 CE.app```)
-* **idea_sdk_13** For intelij-adapter-13 library paths. Set to IntelliJ 13 installation. (e.g. ```/Applications/IntelliJ IDEA 13 CE.app```)
-* **idea_sdk_14** For intelij-adapter-14 library paths. Set to IntelliJ 14 installation. (e.g. ```/Applications/IntelliJ IDEA 14 CE EAP.app/Contents```)
-* **idea_sdk_name** Used as project sdk. Set to a configured current sdk (e.g. ```IDEA IC-123.169```)
-* **idea_sdk_name_11** intelij-adapter-11 module sdk. Set to a configured IntelliJ 11 sdk (e.g. ```IDEA IC-117.1054```)
-* **idea_sdk_name_12** intelij-adapter-12 module sdk. Set to a configured IntelliJ 12 sdk (e.g. ```IDEA IC-123.169```)
-* **idea_sdk_name_13** intelij-adapter-13 module sdk. Set to a configured IntelliJ 13 sdk (e.g. ```IDEA IC-133.696```)
-* **idea_sdk_name_14** intelij-adapter-14 module sdk. Set to a configured IntelliJ 14 sdk (e.g. ```IDEA IC-138.777```)

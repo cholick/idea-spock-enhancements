@@ -7,3 +7,6 @@ idea-spock-enhancements*.jar
 .idea/tasks.xml
 
 out
+/.gradle/
+/build/
+/.idea/
