@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.cholick.idea.spock'
-version '0.12'
+version '0.13-SNAPSHOT'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -28,10 +28,8 @@ intellij {
 }
 
 patchPluginXml {
-    version '0.12'
+    version '0.13'
     changeNotes """
-      Updated to support latest IntelliJ versions.<br>
-      <em>Now uses a gradle build to create/update the plugin.</em><br>
-      Thanks @aflowers001 for contributing this fix.
+      
       """
 }
