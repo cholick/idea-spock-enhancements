@@ -1,6 +1,6 @@
 
 <idea-plugin>
-    <id>com.cholick.idea.spock</id>
+    <id>Spock Framework Enhancements</id>
     <name>Spock Framework Enhancements</name>
     <description>
         <![CDATA[
