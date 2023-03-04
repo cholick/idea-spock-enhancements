@@ -1,6 +1,9 @@
-[![Stories in Ready](https://badge.waffle.io/mcholick/idea-spock-enhancements.png)](https://waffle.io/mcholick/idea-spock-enhancements)  
-#### Spock Enhancements
+#### Maintenance Mode Notice
+This project is only minimally maintained. I will still review merge PRs and fixes, and create new releases, but I likely won't fix things if it breaks as I haven't used the JVM in any real capacity in 10 years.
 
+The code is using an API schedule for removal, as well as several other deprecated APIs; it is likely to cease to work.
+
+#### Spock Enhancements
 A [plugin for IntelliJ IDEA](http://plugins.jetbrains.com/plugin/7114) that improves integration with the Spock specification framework (http://code.google.com/p/spock/).
 
 #### Features
